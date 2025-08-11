@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', Helvetica, sans-serif;
+  color: rgb(61, 61, 61);
+  font-size: 1.1rem;
+}
+
+/*カスタムアニメーション*/
+.inversion-login-color {
+  transition: 0.5s;
+}
+
+.inversion-login-color:hover {
+    margin-top: calc(var(--spacing) * 9);
+    background: rgb(161, 161, 161);
+    color: var(--color-amber-200);
+}
+
+.fadein {
+  animation: slide-in-left;
+}
+
+@keyframes slide-in-left {
+  0% {
+
+  }
+}
