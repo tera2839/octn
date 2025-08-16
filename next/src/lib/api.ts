@@ -6,12 +6,19 @@ export async function createUser(mail: string, pass: string) {
 }
 
 export async function loginUser(mail: string, pass: string) {
-    const {error} = await supabase.auth.signUp({
-        email: mail,
-        password: pass
+    const res = await fetch('api/auth/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({mail,pass}),
+        credentials: 'include',
     });
 
-    return {error};
+    if(res.ok) {
+        const error = await res.json();
+        return {error}
+    }
+
+    return {error: null};
 }
 
 export async function createProps(name: string, price:number,seller: string) {
