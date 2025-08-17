@@ -25,7 +25,14 @@ export async function createProps(name: string, price:number,seller: string) {
     return await supabase.from("props").insert([{id: uuid(), name, price,seller}]);
 }
 
-export async function getReceipt() {
-  
+export function extractAccessToken(cookieHeader: string | null): string | null {
+  if (!cookieHeader) return null;
+
+  const cookies = cookieHeader.split(";").map((c) => c.trim());
+  const accessTokenCookie = cookies.find((c) => c.startsWith("access_token="));
+
+  if (!accessTokenCookie) return null;
+
+  return accessTokenCookie.split("=")[1];
 }
 
